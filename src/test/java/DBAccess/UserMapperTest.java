@@ -22,8 +22,8 @@ public class UserMapperTest {
     private static String USER = "testinguser";
     private static String USERPW = "try1try2tryAgain";
     private static String DBNAME = "useradminTest";
-    private static String HOST = "104.248.32.211";
-//    private static String HOST = "46.101.253.149";
+//    private static String HOST = "104.248.32.211";
+    private static String HOST = "46.101.253.149";
 
     @Before
     public void setUp() {
