@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>kasper.osterbye</groupId>
-    <artifactId>LogInSample</artifactId>
+    <artifactId>LegoHouse</artifactId>
     <version>0.1-Test</version>
     <packaging>war</packaging>
 
-    <name>LogInSample</name>
+    <name>LegoHouse</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.5</version>
+            <version>8.0.12</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

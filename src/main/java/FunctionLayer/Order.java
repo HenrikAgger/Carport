@@ -12,15 +12,24 @@ package FunctionLayer;
 public class Order {
     
     private int id;
-    private User user;
+    private int userId;
     private int length;
     private int width;
     private int height;
     private boolean shipped;
 
-    public Order(int id, User user, int length, int width, int height, boolean shipped) {
+    // When the user creates order.
+    public Order(int userId, int length, int width, int height) {
+        this.userId = userId;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+     
+    // When reading order from database.
+    public Order(int id, int userId, int length, int width, int height, boolean shipped) {
         this.id = id;
-        this.user = user;
+        this.userId = userId;
         this.length = length;
         this.width = width;
         this.height = height;
@@ -35,12 +44,12 @@ public class Order {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getLength() {

@@ -1,4 +1,4 @@
-package DBAccess;
+package DataLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,8 @@ import java.sql.SQLException;
  */
 public class Connector {
 
-    private static final String URL = "jdbc:mysql://104.248.32.211:3306/Lego";
+    private static final String URL = "jdbc:mysql://104.248.32.211:3306/lego";
+//    private static final String URL = "jdbc:mysql://localhost:3306/lego;
     private static final String USERNAME = "henrik";
     private static final String PASSWORD = "Henrik@01";
 
