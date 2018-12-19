@@ -5,37 +5,30 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.Customer;
+import FunctionLayer.LineItem;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Order;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author Henrik
  */
-public class ViewOrders extends Command {
+public class ViewLineItems extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        
+
         HttpSession session = request.getSession();
-        Customer customer = (Customer) session.getAttribute("customer");
-        List<Order> orderList;
-        if (customer.isAdmin()) {
-            orderList = LogicFacade.getAllOrders(customer.getCustomer_id());
-        } else {
-            orderList = LogicFacade.getCustomerOrders(customer.getCustomer_id());
-        }
+      
+        int order_id = Integer.parseInt(request.getParameter("order_id"));
 
-        request.setAttribute("orderList", orderList);
+        List<LineItem> lineItem = LogicFacade.getLineItems(order_id);
 
-        return "vieworders";
-    }  
-}   
-
+        request.setAttribute("lineItem", lineItem);
+        return "viewlineitems";
+    }
+}

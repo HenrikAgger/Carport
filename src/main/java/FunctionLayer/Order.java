@@ -5,51 +5,62 @@
  */
 package FunctionLayer;
 
+import java.sql.Date;
+
 /**
  *
  * @author Henrik
  */
 public class Order {
-    
-    private int id;
-    private int userId;
+
+    private int order_id;
+    private int customer_id;
+    private Date date;
+    private String comment;
     private int length;
     private int width;
     private int height;
-    private boolean shipped;
 
-    // When the user creates order.
-    public Order(int userId, int length, int width, int height) {
-        this.userId = userId;
+    public Order(int order_id, int customer_id, Date date, String comment, int length, int width, int height) {
+        this.order_id = order_id;
+        this.customer_id = customer_id;
+        this.date = date;
+        this.comment = comment;
         this.length = length;
         this.width = width;
         this.height = height;
     }
-     
-    // When reading order from database.
-    public Order(int id, int userId, int length, int width, int height, boolean shipped) {
-        this.id = id;
-        this.userId = userId;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-        this.shipped = shipped;
+
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public int getId() {
-        return id;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public int getLength() {
@@ -76,11 +87,10 @@ public class Order {
         this.height = height;
     }
 
-    public boolean isShipped() {
-        return shipped;
+    @Override
+    public String toString() {
+        return "Order{" + "order_id=" + order_id + ", customer_id=" + customer_id + ", date=" + date + ", comment=" + comment + ", length=" + length + ", width=" + width + ", height=" + height + '}';
     }
-
-    public void setShipped(boolean shipped) {
-        this.shipped = shipped;
-    }    
+    
+    
 }

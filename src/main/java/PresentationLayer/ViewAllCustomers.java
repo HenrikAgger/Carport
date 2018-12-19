@@ -8,34 +8,27 @@ package PresentationLayer;
 import FunctionLayer.Customer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Order;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author Henrik
  */
-public class ViewOrders extends Command {
+public class ViewAllCustomers extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
-        List<Order> orderList;
-        if (customer.isAdmin()) {
-            orderList = LogicFacade.getAllOrders(customer.getCustomer_id());
-        } else {
-            orderList = LogicFacade.getCustomerOrders(customer.getCustomer_id());
-        }
+        List<Customer> customerList;
 
-        request.setAttribute("orderList", orderList);
+        customerList = LogicFacade.getAllCustomers(customer.getCustomer_id());
 
-        return "vieworders";
-    }  
-}   
+        request.setAttribute("customerList", customerList);
 
+        return "viewallcustomers";
+    }   
+}

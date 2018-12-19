@@ -1,9 +1,10 @@
 <%-- 
-    Document   : confirmationpage
+    Document   : orderpage
     Created on : 12-10-2018, 14:08:12
     Author     : Henrik
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
     <body>
         <div>
             <% Order order = (Order) request.getAttribute("order");%>
-            <h1>Order ID: <%=order.getId()%> </h1>
+            <h1>Order ID: <%=order.getOrder_id()%> </h1>
 
             <table>
                 <tr>
@@ -37,11 +38,15 @@
                 <th><%=order.getHeight()%> </th> 
                 </tr>
             </table>
-            <p>Return to login-page <strong><a href="index.jsp">link to indexside</a></p>
-            <img src="image.jpg" alt="legoklods" height="100" width="100">
-
-            <p>View orders <strong><a href="WEB-INF/vieworders.jsp">link to order history</a></p>
-
         </div>
-    </body>    
+    </body>
+
+    <p>Return to login-page <strong><a href="index.jsp">link to indexside</a></p>
+
+    <p>View orders </p>
+    <form name="View Orders" action="FrontController" method="POST">
+        <input type="hidden" name="command" value="viewOrders" /> <br>
+        <input type="submit" value="Order history">
+    </form>
+
 </html>

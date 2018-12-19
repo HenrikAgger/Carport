@@ -25,21 +25,17 @@
         <table>
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Customer ID</th>
-                    <th>Date</th>
-                    <th>Comment</th>
+                    <th>User ID</th>
                     <th>Length</th>
                     <th>Width</th>
-                    <th>Height</th>
-                    <th>LineItems</th>
+                    <th>Height</th> 
                 </tr>
             </thead>
 
             <tbody>
 
                 <%List<Order> orderList = (List<Order>) request.getAttribute("orderList");%>
-
+                (customer_id, comment,length, width, height)
                 <%
                     for (Order order : orderList) {%>
                 <tr>
@@ -49,8 +45,15 @@
                     <td> <%= order.getComment()%> </td>
                     <td> <%= order.getLength()%> </td>
                     <td> <%= order.getWidth()%> </td>
-                    <td> <%= order.getHeight()%> </td>
-                    <td><a href="/FrontController?command=viewLineItems&order_id=<%=order.getOrder_id()%>">View lineItems</a>
+                    <td> <%= order.getHeight()%> </td>                    
+
+
+                    <%--                    
+                                        <td> <%= order.getUserId() %> </td>
+                                        <td> <%= order.getLength() %> </td>
+                                        <td> <%= order.getWidth() %> </td>
+                                        <td> <%= order.getHeight() %> </td>
+                    --%>                    
                 </tr>
 
                 <% }%>

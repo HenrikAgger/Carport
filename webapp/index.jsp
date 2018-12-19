@@ -20,10 +20,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
+                        <input type="text" name="email" value="jens@somewhere.com">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="sesam">
+                        <input type="password" name="password" value="jensen">
                         <br>
                         <input type="submit" value="Submit">
                     </form>
@@ -32,8 +32,8 @@
                 <td>
                     <form name="register" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="register">
-                        Name:<br>
-                        <input type="text" name="name" value="someone">
+                        Username:<br>
+                        <input type="text" name="name" value="sesam">
                         <br>
                         Phone:<br>
                         <input type="text" name="phone" value="12345678">
