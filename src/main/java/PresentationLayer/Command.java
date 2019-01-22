@@ -17,6 +17,7 @@ abstract class Command {
         commands.put( "viewOrders", new ViewOrders());
         commands.put("viewLineItems", new ViewLineItems());
         commands.put("viewAllCustomers", new ViewAllCustomers());
+        commands.put("viewDrawing", new ViewDrawing());
     }
 
     static Command from( HttpServletRequest request ) {

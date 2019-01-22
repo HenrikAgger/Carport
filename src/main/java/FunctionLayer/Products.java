@@ -15,7 +15,7 @@ public class Products {
     private int length;
     private String unit;
     private String description;
-
+    
     public Products(int product_id, String name, int length, String unit, String description) {
         this.product_id = product_id;
         this.name = name;

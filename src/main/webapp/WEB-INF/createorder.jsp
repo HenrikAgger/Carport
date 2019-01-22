@@ -1,5 +1,5 @@
 <%-- 
-    Document   : orderpage
+    Document   : createorder
     Created on : 12-10-2018, 14:08:12
     Author     : Henrik
 --%>
@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/newcss.css">
-        <title>Order</title>
+        <title>View customer orders</title>
     </head>
 
     <body>
@@ -44,9 +44,9 @@
     <p>Return to login-page <strong><a href="index.jsp">link to indexside</a></p>
 
     <p>View orders </p>
-    <form name="View Orders" action="FrontController" method="POST">
+    <form name="ViewOrders" action="FrontController" method="POST">
         <input type="hidden" name="command" value="viewOrders" /> <br>
-        <input type="submit" value="Order history">
+        <input type="submit" value="View orders">
     </form>
 
 </html>

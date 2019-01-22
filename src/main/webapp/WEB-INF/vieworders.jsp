@@ -11,17 +11,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View order-history</title>
+        <title>View orders</title>
     </head>
-
+    
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>   
-
+    
+    
     <body>
-        <h2>List of Orders</h2>
+        <h2>View orders</h2>
         <table>
             <thead>
                 <tr>
@@ -33,6 +34,7 @@
                     <th>Width</th>
                     <th>Height</th>
                     <th>LineItems</th>
+                    <th>Drawing</th>
                 </tr>
             </thead>
 
@@ -51,6 +53,7 @@
                     <td> <%= order.getWidth()%> </td>
                     <td> <%= order.getHeight()%> </td>
                     <td><a href="/FrontController?command=viewLineItems&order_id=<%=order.getOrder_id()%>">View lineItems</a>
+                        <td><a href="/FrontController?command=viewDrawing&order_id=<%=order.getOrder_id()%>">View drawing</a> 
                 </tr>
 
                 <% }%>

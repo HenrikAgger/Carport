@@ -74,7 +74,10 @@ public class CustomerMapper {
             list = new ArrayList<>();
             Connection con = DBConnector.connection();
 
-            String SQL = "SELECT * FROM Carport.Customer WHERE admin=0";
+            String SQL = "SELECT customer_id, name, phone, email, password, admin "
+                    + "FROM Carport.Customer "
+                    + "WHERE admin=0 AND password IS NOT NULL "
+                    + "ORDER BY customer_id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();

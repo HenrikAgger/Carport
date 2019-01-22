@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>View all customers</title>
     </head>
     
     <style>
@@ -19,7 +19,7 @@
             border: 1px solid black;
         }
     </style>   
-
+    
     <body>
         <h2>List of customers</h2>
         <table>
@@ -51,7 +51,7 @@
             </tbody>
         </table>
 
-        <h3>You have <%= customerList.size()%> orders</h3>
+        <h3>You have <%= customerList.size()%> customers</h3>
 
     </body>
 </html>

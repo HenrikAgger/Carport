@@ -21,6 +21,19 @@ public class Order {
     private int width;
     private int height;
 
+    
+    public Order(int order_id, int length, int height){
+        this.order_id = order_id;
+        this.length = length;
+        this.height = height;
+    }
+
+    
+//    public Order(int length, int width) {
+//        this.length = length;
+//        this.width = width;
+//    }
+    
     public Order(int order_id, int customer_id, Date date, String comment, int length, int width, int height) {
         this.order_id = order_id;
         this.customer_id = customer_id;
@@ -86,11 +99,5 @@ public class Order {
     public void setHeight(int height) {
         this.height = height;
     }
-
-    @Override
-    public String toString() {
-        return "Order{" + "order_id=" + order_id + ", customer_id=" + customer_id + ", date=" + date + ", comment=" + comment + ", length=" + length + ", width=" + width + ", height=" + height + '}';
-    }
-    
     
 }

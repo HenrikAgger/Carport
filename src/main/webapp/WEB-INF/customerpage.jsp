@@ -17,30 +17,31 @@
     <body>
         <h1>Hello <%=request.getParameter("email")%> </h1>
         You are now logged in as a customer on our wonderful site. 
-    </body>
-    
-    <td>
-        <form name="createOrder" action="FrontController" method="POST">
-            <br>
-            <input type="hidden" name="command" value="createOrder">
-            Comment:<br>
-            <input type="text" name="comment" value="">
-            <br>            
-            Length:<br>
-            <input type="number" name="length" value="100">
-            <br>
-            Width:<br>
-            <input type="number" name="width" value="100">
-            <br>
-            Height:<br>
-            <input type="number" name="height" value="100">
-            <br><br>
-            <input type="submit" value="Create order">
-        </form>
-    </td>
 
+        <table>
+            <td>
+                <form name="createOrder" action="FrontController" method="POST">
+                    <br>
+                    <input type="hidden" name="command" value="createOrder">
+                    Comment:<br>
+                    <input type="text" name="comment" value="">
+                    <br>            
+                    Length:<br>
+                    <input type="number" name="length" value="780">
+                    <br>
+                    Width:<br>
+                    <input type="number" name="width" value="600">
+                    <br>
+                    Height:<br>
+                    <input type="number" name="height" value="210">
+                    <br><br>
+                    <input type="submit" value="Create order">
+                </form>
+            </td>
+        </table>
         <form name="ViewOrders" action="FrontController" method="POST">
             <input type="hidden" name="command" value="viewOrders" > <br>
             <input type="submit" value="View customer orders">
         </form>
+    </body>
 </html>

@@ -5,10 +5,9 @@
  */
 package DataLayer;
 
-import FunctionLayer.LineItem;
+import FunctionLayer.LineItems;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
-import FunctionLayer.Bill;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -52,8 +51,11 @@ public class OrderMapper {
         try {
             list = new ArrayList<>();
             Connection con = DBConnector.connection();
-            String SQL = "SELECT * FROM Carport.Order o, Carport.Customer c "
-                    + "WHERE o.order_id = c.customer_id AND c.customer_id = ?;";
+
+            String SQL = "SELECT * "
+                    + "FROM Carport.Order o, Carport.Customer c "
+                    + "WHERE o.customer_id = c.customer_id AND c.customer_id = ? ORDER BY order_id DESC";
+
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ps.setInt(1, customer_id);
@@ -76,16 +78,15 @@ public class OrderMapper {
         return list;
     }
 
-    public static List<LineItem> getLineItems(int order_id) throws LoginSampleException {
-        List<LineItem> list;
+    public static List<LineItems> getLineItems(int order_id) throws LoginSampleException {
+        List<LineItems> list;
         try {
             list = new ArrayList<>();
             Connection con = DBConnector.connection();
-            String SQL = "SELECT o.order_id, p.product_id, l.amount, p.name, p.length, p.unit, p.description "
-                    + "FROM Carport.LineItems l "
-                    + "INNER JOIN Carport.Order o ON l.order_id = o.order_id "
-                    + "INNER JOIN Carport.Products p ON l.product_id = p.product_id "
-                    + "WHERE o.order_id = ?";
+
+            String SQL = "SELECT o.order_id, o.customer_id, o.date, o.comment, o.length, o.width, o.height, l.amount, p.product_id, p.name, p.plength, p.unit, p.description "
+                    + "FROM Carport.Order o, Carport.Products p, Carport.LineItems l "
+                    + "WHERE o.order_id = ?"; 
 
             PreparedStatement ps = con.prepareStatement(SQL);
 
@@ -96,54 +97,19 @@ public class OrderMapper {
                 int product_id = rs.getInt("product_id");
                 int amount = rs.getInt("amount");
                 String name = rs.getString("name");
-                int length = rs.getInt("length");
+                int plength = rs.getInt("plength");
                 String unit = rs.getString("unit");
                 String description = rs.getString("description");
-                list.add(new LineItem(o_id, product_id, amount, name, length, unit, description));
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
-        }
-        return list;
-    }
-
-    public static List<Bill> getCalculations(Order order) throws LoginSampleException {
-        List<Bill> list;
-        try {
-            list = new ArrayList<>();
-            Connection con = DBConnector.connection();
-            String SQL = "SELECT o.length, o.width FROM Carport.Order o, Carport.Products p "
-                    + "WHERE o.order_id = ? AND o.order_id = p.product_id";
-            PreparedStatement ps = con.prepareStatement(SQL);
-
-            ps.setInt(1, order.getOrder_id());
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
+                int height = rs.getInt("height");
+
+                list.add(new LineItems(o_id, product_id, amount, name, plength, unit, description, length, width, height)); 
             }
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
         return list;
-    }
-
-    public static int createLineItems(LineItem lineItem) throws LoginSampleException {
-        try {
-            Connection con = DBConnector.connection();
-            String SQL = "INSERT INTO Carport.LineItems (order_id, product_id, amount) VALUES (?,?,?)";
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, lineItem.getOrder_id());
-            ps.setInt(2, lineItem.getProduct_id());
-            ps.setInt(3, lineItem.getAmount());
-
-            int res = ps.executeUpdate();
-            return res;
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-            return 0;
-        }
     }
 
     public static List<Order> getAllOrders(int customer_id) throws LoginSampleException {
@@ -152,8 +118,11 @@ public class OrderMapper {
             list = new ArrayList<>();
             Connection con = DBConnector.connection();
 
-            String SQL = "SELECT * FROM Carport.Order o, Carport.Customer c "
-                    + "WHERE o.order_id = c.customer_id";
+            String SQL = "SELECT * "
+                    + "FROM Carport.Order o, Carport.Customer c "
+                    + "WHERE o.customer_id = c.customer_id "
+                    + "ORDER BY order_id DESC, c.customer_id";
+            
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();

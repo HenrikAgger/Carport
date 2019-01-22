@@ -5,7 +5,7 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LineItem;
+import FunctionLayer.LineItems;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import java.util.List;
@@ -26,9 +26,9 @@ public class ViewLineItems extends Command {
       
         int order_id = Integer.parseInt(request.getParameter("order_id"));
 
-        List<LineItem> lineItem = LogicFacade.getLineItems(order_id);
+        List<LineItems> lineItems = LogicFacade.getLineItems(order_id);
 
-        request.setAttribute("lineItem", lineItem);
+        request.setAttribute("lineItems", lineItems);
         return "viewlineitems";
     }
 }
